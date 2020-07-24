@@ -14,9 +14,9 @@ public class InitManager {
 
     /**
      * Менеджер пропертей
-     * @see TestPropManager#getTestProperies()
+     * @see TestPropManager#getTestPropManager()
      */
-    public static TestPropManager props = TestPropManager.getTestProperies();
+    public static TestPropManager props = TestPropManager.getTestPropManager();
 
     /**
      * Инициализация фреймворка и запуск браузера со страницей приложения

@@ -20,9 +20,9 @@ public class DriverManager {
 
     /**
      * Менеджер пропертей
-     * @see TestPropManager#getTestProperies()
+     * @see TestPropManager#getTestPropManager()
      */
-    private static TestPropManager props = TestPropManager.getTestProperies();
+    private static TestPropManager props = TestPropManager.getTestPropManager();
 
     /**
      * Конструктор специально запривейтили (синглтон)

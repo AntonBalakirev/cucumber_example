@@ -3,6 +3,7 @@ package ru.appline.framework.managers;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Properties;
 
 /**
@@ -27,7 +28,7 @@ public class TestPropManager {
      * Конструктор специально запривейтили (синглтон)
      * Происходит загрузка содержимого файла application.properties в {@link #properties}
      *
-     * @see TestPropManager#getTestProperies()
+     * @see TestPropManager#getTestPropManager()
      */
     private TestPropManager() {
         try {
@@ -44,7 +45,7 @@ public class TestPropManager {
      *
      * @return TestPropManager - возвращает TestPropManager
      */
-    public static TestPropManager getTestProperies() {
+    public static TestPropManager getTestPropManager() {
         if (INSTANCE == null) {
             INSTANCE = new TestPropManager();
         }

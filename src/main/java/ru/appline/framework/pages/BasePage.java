@@ -73,8 +73,8 @@ public class BasePage {
     /**
      * Явное ожидание состояния кликабельности элемента
      *
-     * @param element - веб-элемент странички
-     * @return
+     * @param element - веб-элемент который требует проверки на кликабельность
+     * @return WebElement - возвращаем тот же веб элемент что был передан в функцию
      * @see WebDriverWait
      * @see org.openqa.selenium.support.ui.FluentWait
      * @see org.openqa.selenium.support.ui.Wait
