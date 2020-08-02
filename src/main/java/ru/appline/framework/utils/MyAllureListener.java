@@ -11,7 +11,8 @@ public class MyAllureListener extends AllureJunit4 {
 
 //  Здесь должен быть переопределённые методы или метод который позволит прикреплять скриншоты к шагу аллюра
 //  Если не получается переопредилить то скопировать библиотеку AllureJunit4 себе в пакет listener
-//  И вызвать в нужный момент Allure.addAttachment();
+//  И прописать в конкретном месте в скопированной библиотеке строчку Allure.addAttachment();
+//  Или там же прописать Allure.getLifecycle().addAttachment();
 
 
 
