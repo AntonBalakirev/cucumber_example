@@ -14,10 +14,10 @@ import java.util.List;
  */
 public class StartPage extends BasePage {
 
-    @FindBy(xpath = "//button[@class='lg-menu__link']")
+    @FindBy(xpath = "//label[contains(@class, 'kitt-top-menu__link ')]")
     List<WebElement> menuBaseList;
 
-    @FindBy(xpath = "//a[@class='lg-menu__sub-link' and text()]")
+    @FindBy(xpath = "//a[contains(@class, 'kitt-top-menu__link_second')]")
     List<WebElement> menuSubList;
 
     /**
@@ -30,7 +30,7 @@ public class StartPage extends BasePage {
     public StartPage selectBaseMenu(String nameBaseMenu) {
         for (WebElement menuItem : menuBaseList) {
             if (menuItem.getText().equalsIgnoreCase(nameBaseMenu)) {
-                action.moveToElement(menuItem).build().perform();
+                action.moveToElement(menuItem).click().build().perform();
                 return this;
             }
         }
@@ -48,8 +48,8 @@ public class StartPage extends BasePage {
     public StrahovaniePage selectSubMenu(String nameSubMenu) {
         for (WebElement menuItem : menuSubList) {
             if (menuItem.getText().equalsIgnoreCase(nameSubMenu)) {
-                action.moveToElement(menuItem).build().perform();
-                wait.until(ExpectedConditions.visibilityOf(menuItem)).click();
+                wait.until(ExpectedConditions.visibilityOf(menuItem));
+                action.moveToElement(menuItem).click().build().perform();
                 return app.getStrahovaniePage();
             }
         }
