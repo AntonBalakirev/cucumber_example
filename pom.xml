@@ -22,6 +22,8 @@
         <!-- Dependencies Version -->
         <selenium-java.version>3.141.59</selenium-java.version>
         <junit.version>4.13</junit.version>
+        <allure-cucumber.version>2.13.5</allure-cucumber.version>
+        <cucumber.version>6.7.0</cucumber.version>
         <aspectj.version>1.8.10</aspectj.version>
     </properties>
 
@@ -41,18 +43,38 @@
             <version>${junit.version}</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-cucumber4-jvm -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-cucumber4-jvm</artifactId>
+            <version>${allure-cucumber.version}</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-junit4 -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-junit4</artifactId>
             <version>2.13.5</version>
         </dependency>
-
     </dependencies>
 
     <build>
         <plugins>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -70,11 +92,14 @@
                 <version>3.0.0-M5</version>
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
-                    <includes>**/*Test.java</includes>
+                    <includes>
+                        <include>**/CucumberRunner.java</include>
+                    </includes>
                     <argLine>
                         -Xmx1024m
                         -Dfile.encoding=${encoding.type}
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                        -Dcucumber.options="--plugin io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm"
                     </argLine>
                     <systemPropertyVariables>
                         <allure.results.directory>${project.build.directory}/reports/allure-results</allure.results.directory>
