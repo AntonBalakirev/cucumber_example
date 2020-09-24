@@ -22,7 +22,6 @@ public class TarifPage extends BasePage {
      *
      * @return TarifPage - т.е. остаемся на этой странице
      */
-    @Step("Выбираем тариф страхования 'Минимальный'")
     public TarifPage selectTarifMin() {
         scrollToElementJs(insuranceCoverageAmount);
         insuranceCoverageAmount.click();
@@ -34,7 +33,6 @@ public class TarifPage extends BasePage {
      *
      * @return RegistrationFormPage - т.е. переходим на страницу {@link ru.appline.framework.pages.RegistrationFormPage}
      */
-    @Step("Кликаем по кнопке 'Оформить'")
     public RegistrationFormPage clickBtnOformit() {
         scrollToElementJs(checkoutButton);
         elementToBeClickable(checkoutButton).click();

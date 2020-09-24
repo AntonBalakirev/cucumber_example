@@ -22,7 +22,6 @@ public class StrahovaniePage extends BasePage {
      *
      * @return StrahovaniePage - т.е. остаемся на этой странице
      */
-    @Step("Проверка открытия страницы StrahovaniePage")
     public StrahovaniePage checkOpenStrahovaniePage() {
         Assert.assertEquals("Заголовок отсутствует/не соответствует требуемому",
                 "Страхование путешественников", pageTitle.getText());
@@ -35,7 +34,6 @@ public class StrahovaniePage extends BasePage {
      *
      * @return TarifPage - т.е. переходим на страницу {@link ru.appline.framework.pages.TarifPage}
      */
-    @Step("Кликаем по кнопке 'Оформить онлайн'")
     public TarifPage clickBtnOformitOnline() {
         scrollToElementJs(checkoutOnlineButton);
         elementToBeClickable(checkoutOnlineButton).click();
