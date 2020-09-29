@@ -4,6 +4,8 @@ pipeline{
         stage('Run Tests'){
             steps{
                 withMaven(maven: 'Maven3') {
+                    sh "cd ./drivers"
+                    sh "cmod +x chromedriver_linux"
                     sh "mvn clean test -Dcucumber.filter.tags='${TAGS}'"
                 }
             }
