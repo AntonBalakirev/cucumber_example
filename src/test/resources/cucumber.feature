@@ -1,4 +1,6 @@
 #language: ru
+
+@all
 Функционал: Страхование
 
   @negative
