@@ -5,7 +5,7 @@ pipeline{
             steps{
                 withMaven(maven: 'Maven3') {
                     sh "chmod 777 -R src/main/resources/drivers"
-                    sh "mvn clean test -Dcucumber.filter.tags='${TAGS}'"
+                    sh "mvn clean test -Dtype.browser=firefox -Dcucumber.filter.tags='${TAGS}'"
                 }
             }
         }
