@@ -16,18 +16,21 @@ public class DriverManager {
 
     /**
      * Переменна для хранения объекта веб дравера
+     *
      * @see WebDriver
      */
     private static WebDriver driver;
 
     /**
      * Менеджер пропертей
+     *
      * @see TestPropManager#getTestPropManager()
      */
     private static TestPropManager props = TestPropManager.getTestPropManager();
 
     /**
      * Конструктор специально запривейтили (синглтон)
+     *
      * @see DriverManager#getDriver()
      */
     private DriverManager() {
@@ -46,13 +49,20 @@ public class DriverManager {
                 System.setProperty("webdriver.chrome.driver", props.getProperty(PATH_CHROME_DRIVER));
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
-                chromeOptions.addArguments("disable-features=NetworkService");
+                chromeOptions.addArguments("start-maximized");
+                chromeOptions.addArguments("enable-automation");
+                chromeOptions.addArguments("--no-sandbox");
+                chromeOptions.addArguments("--disable-infobars");
+                chromeOptions.addArguments("--disable-dev-shm-usage");
+                chromeOptions.addArguments("--disable-browser-side-navigation");
+                chromeOptions.addArguments("--disable-gpu");
                 driver = new ChromeDriver(chromeOptions);
         }
     }
 
     /**
      * Метод ленивой инициализации веб драйвера
+     *
      * @return WebDriver - возвращает веб драйвер
      */
     public static WebDriver getDriver() {
@@ -64,6 +74,7 @@ public class DriverManager {
 
     /**
      * Метод для закрытия сессии драйвера и браузера
+     *
      * @see WebDriver#quit()
      */
     public static void quitDriver() {
