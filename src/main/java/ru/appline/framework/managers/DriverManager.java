@@ -47,6 +47,7 @@ public class DriverManager {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
                 chromeOptions.addArguments("enable-features=NetworkServiceInProcess");
+                chromeOptions.addArguments("disable-features=NetworkService");
                 driver = new ChromeDriver(chromeOptions);
         }
     }
