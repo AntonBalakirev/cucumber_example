@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class StartPage extends BasePage {
 
-    @FindBy(xpath = "//label[contains(@class, 'kitt-top-menu__link ')]")
+    @FindBy(xpath = "//a[contains(@class, 'kitt-top-menu__link') and @role='button']")
     List<WebElement> menuBaseList;
 
     @FindBy(xpath = "//a[contains(@class, 'kitt-top-menu__link_second')]")

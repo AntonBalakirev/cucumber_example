@@ -28,13 +28,18 @@ public class Steps {
         app.getStartPage().selectSubMenu(nameSubMenu);
     }
 
-    @Тогда("^Проверка открытия страницы Страхование$")
-    public void checkOpenStrahovaniePage(){
-        app.getStrahovaniePage().checkOpenStrahovaniePage();
+    @Тогда("^Проверка открытия страницы '(.*)'$")
+    public void checkOpenStrahovaniePage(String title){
+        app.getStrahovaniePage().checkOpenStrahovaniePage(title);
+    }
+
+    @Когда("^Выбрать страховую программу '(.*)'$")
+    public void selectInsuranceProgram(String insuranceProgram){
+        app.getStrahovaniePage().selectInsuranceProgram(insuranceProgram);
     }
 
     @Когда("^Кликаем по кнопке 'Оформить онлайн'$")
-    public void clickBtnOformitOnline(){
+    public void clickBtnOformitOnline() {
         app.getStrahovaniePage().clickBtnOformitOnline();
     }
 
