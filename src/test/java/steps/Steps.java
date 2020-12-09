@@ -29,8 +29,8 @@ public class Steps {
     }
 
     @Тогда("^Проверка открытия страницы '(.*)'$")
-    public void checkOpenStrahovaniePage(String title){
-        app.getStrahovaniePage().checkOpenStrahovaniePage(title);
+    public void checkOpenPage(String title) {
+        app.getStrahovaniePage().checkOpenPage(title);
     }
 
     @Когда("^Выбрать страховую программу '(.*)'$")

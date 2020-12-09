@@ -6,9 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.Iterator;
-import java.util.Set;
-
 import static ru.appline.framework.managers.DriverManager.getDriver;
 
 /**
@@ -17,20 +14,24 @@ import static ru.appline.framework.managers.DriverManager.getDriver;
  */
 public class StrahovaniePage extends BasePage {
 
-    @FindBy(xpath = "//h1[@class = 's-hero-banner__title']")
+    @FindBy(xpath = "//h1[contains(@class, 's-hero-banner')]")
     WebElement pageTitle;
+
+    final String pageTitleLocator = "//h1[contains(@class, 's-hero-banner')]";
 
     @FindBy(xpath = "//a[text() = 'Оформить онлайн' and contains(@class, 's-hero-banner')]")
     WebElement checkoutOnlineButton;
 
-    final String insuranceProgram = "//h2[contains(text(), '%s')]/following-sibling::div//span";
+    final String insuranceProgram = "//div[normalize-space()='%s']/div";
+    final String checkOutInsuranceProgram = "../following::div/a[text()='Оформить онлайн'][1]";
 
     /**
      * Проверка открытия страницы, путём проверки title страницы
      *
      * @return StrahovaniePage - т.е. остаемся на этой странице
      */
-    public StrahovaniePage checkOpenStrahovaniePage(String title) {
+    public StrahovaniePage checkOpenPage(String title) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(pageTitleLocator)));
         wait.until(ExpectedConditions.visibilityOf(pageTitle));
         Assert.assertEquals("Заголовок отсутствует/не соответствует требуемому",
                 title, pageTitle.getText());
@@ -38,27 +39,11 @@ public class StrahovaniePage extends BasePage {
     }
 
 
-    /**
-     * Кликаем на кнопку "Оформить онлайн" у выбранной страховой программы
-     *
-     * @return StrahovaniePage - т.е. остаемся на этой странице
-     */
     public StrahovaniePage selectInsuranceProgram(String insuranceProgram) {
-        String parentWindow = getDriver().getWindowHandle();
-
-        WebElement program = getDriver().findElement(By.xpath(String.format(this.insuranceProgram, insuranceProgram)));
+        WebElement program = getDriver().findElement(
+                By.xpath(String.format(this.insuranceProgram, insuranceProgram.replaceAll(" ", ""))));
         scrollToElementJs(program);
-        elementToBeClickable(program).click();
-
-        Set<String> handeles = getDriver().getWindowHandles();
-        Iterator<String> iteator = handeles.iterator();
-        while(iteator.hasNext()){
-            String childWindow = iteator.next();
-            if (!parentWindow.equals(childWindow)){
-                getDriver().switchTo().window(childWindow);
-                break;
-            }
-        }
+        elementToBeClickable(program.findElement(By.xpath(checkOutInsuranceProgram))).click();
         return this;
     }
 
