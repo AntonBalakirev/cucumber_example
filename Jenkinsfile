@@ -1,9 +1,5 @@
 pipeline{
-    agent {
-        node {
-            label "${NODE}"
-        }
-    }
+    agent any
     stages{
         stage('Run Tests'){
             steps{
