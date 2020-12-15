@@ -1,5 +1,5 @@
 pipeline{
-    agent any
+    agent mbaykova
     stages{
         stage('Run Tests'){
             steps{
