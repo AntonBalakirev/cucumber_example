@@ -1,6 +1,5 @@
 package ru.appline.framework.pages;
 
-import io.qameta.allure.Step;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,10 +7,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
-/**
- * @author Arkadiy_Alaverdyan
- * Стартовая страница приложения
- */
 public class StartPage extends BasePage {
 
     @FindBy(xpath = "//a[contains(@class, 'kitt-top-menu__link') and @role='button']")

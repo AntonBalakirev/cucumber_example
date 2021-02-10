@@ -3,7 +3,7 @@ package ru.appline.framework.managers;
 import ru.appline.framework.pages.RegistrationFormPage;
 import ru.appline.framework.pages.StartPage;
 import ru.appline.framework.pages.StrahovaniePage;
-import ru.appline.framework.pages.TarifPage;
+import ru.appline.framework.pages.TariffPage;
 
 /**
  * @author Arkadiy_Alaverdyan
@@ -29,7 +29,7 @@ public class ManagerPages {
     /**
      * Страничка выбора полиса или тарифа
      */
-    TarifPage tarifPage;
+    TariffPage tariffPage;
 
     /**
      * Страничка оформления полиса страхования
@@ -80,15 +80,15 @@ public class ManagerPages {
     }
 
     /**
-     * Ленивая инициализация {@link ru.appline.framework.pages.TarifPage}
+     * Ленивая инициализация {@link ru.appline.framework.pages.TariffPage}
      *
      * @return TarifPage
      */
-    public TarifPage getTarifPage() {
-        if (tarifPage == null) {
-            tarifPage = new TarifPage();
+    public TariffPage getTariffPage() {
+        if (tariffPage == null) {
+            tariffPage = new TariffPage();
         }
-        return tarifPage;
+        return tariffPage;
     }
 
     /**

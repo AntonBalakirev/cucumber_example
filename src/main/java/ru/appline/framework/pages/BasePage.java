@@ -84,6 +84,10 @@ public class BasePage {
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
+    protected WebElement elementToBeVisible(WebElement element) {
+        return wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
     /**
      * Общий метод по заполнения полей ввода
      *

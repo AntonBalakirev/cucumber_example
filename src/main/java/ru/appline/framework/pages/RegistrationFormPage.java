@@ -159,7 +159,8 @@ public class RegistrationFormPage extends BasePage {
      *
      * @return RegistrationFormPage - т.е. остаемся на этой странице
      */
-    public RegistrationFormPage clickBtnContinue() {
+    @Step("Кликаем по кнопке 'Продолжить'")
+    public RegistrationFormPage clickContinueButton() {
         elementToBeClickable(btnContinue).click();
         return this;
     }

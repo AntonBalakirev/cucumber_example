@@ -29,8 +29,13 @@ public class Steps {
     }
 
     @Тогда("^Проверка открытия страницы '(.*)'$")
-    public void checkOpenPage(String title) {
+    public void checkPageTitle(String title) {
         app.getStrahovaniePage().checkOpenPage(title);
+    }
+
+    @Тогда("^Проверка перехода на страницу '(.*)'$")
+    public void checkPage(String title) {
+        app.getTariffPage().checkOpenPage(title);
     }
 
     @Когда("^Выбрать страховую программу '(.*)'$")
@@ -39,18 +44,18 @@ public class Steps {
     }
 
     @Когда("^Кликаем по кнопке 'Оформить онлайн'$")
-    public void clickBtnOformitOnline() {
-        app.getStrahovaniePage().clickBtnOformitOnline();
+    public void clickCheckoutButtonOnline() {
+        app.getStrahovaniePage().clickCheckoutButton();
     }
 
-    @Когда("^Выбираем тариф страхования 'Минимальный'$")
-    public void selectTarifMin(){
-        app.getTarifPage().selectTarifMin();
+    @Когда("^Выбираем тариф страхования '(.*)'$")
+    public void selectTarifMin(String coverageSum){
+        app.getTariffPage().selectCoverage(coverageSum);
     }
 
     @Когда("^Кликаем по кнопке 'Оформить'$")
-    public void clickBtnOformit(){
-        app.getTarifPage().clickBtnOformit();
+    public void clickCheckoutButton(){
+        app.getTariffPage().clickCheckoutButton();
     }
 
     @Когда("^Заполняем форму поле/значение$")
@@ -64,7 +69,7 @@ public class Steps {
 
     @Когда("^Кликаем по кнопке 'Продолжить'$")
     public void clickBtnContinue(){
-        app.getRegistrationFormPage().clickBtnContinue();
+        app.getRegistrationFormPage().clickContinueButton();
     }
 
     @Тогда("^Проверка что у поля присутствует ошибка с текстом$")
