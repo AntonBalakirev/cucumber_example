@@ -48,8 +48,8 @@ public class Steps {
         app.getStrahovaniePage().clickCheckoutButton();
     }
 
-    @Когда("^Выбираем тариф страхования '(.*)'$")
-    public void selectTarifMin(String coverageSum){
+    @Когда("^Выбираем сумму страховой защиты '(.*)'$")
+    public void selectCoverage(String coverageSum){
         app.getTariffPage().selectCoverage(coverageSum);
     }
 
