@@ -56,6 +56,13 @@ public class ManagerPages {
     }
 
     /**
+     * Сброс менеджера страничек
+     */
+    public static void disableManagerPages() {
+        managerPages = null;
+    }
+
+    /**
      * Ленивая инициализация {@link ru.appline.framework.pages.StartPage}
      *
      * @return StartPage

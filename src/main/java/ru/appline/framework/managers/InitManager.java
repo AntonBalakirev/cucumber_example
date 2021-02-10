@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 import static ru.appline.framework.managers.DriverManager.getDriver;
 import static ru.appline.framework.managers.DriverManager.quitDriver;
+import static ru.appline.framework.managers.ManagerPages.disableManagerPages;
 import static ru.appline.framework.utils.PropConst.*;
 
 /**
@@ -40,5 +41,6 @@ public class InitManager {
      */
     public static void quitFramework() {
         quitDriver();
+        disableManagerPages();
     }
 }
