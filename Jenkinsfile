@@ -1,11 +1,9 @@
 pipeline{
-    agent { label 'mbaykova' }
+    agent any
     stages{
         stage('Run Tests'){
             steps{
-                withMaven(jdk: 'Java 1.8', maven: 'Maven3') {
-                    bat "mvn clean test -Dcucumber.filter.tags=\"${TAGS}\""
-                }
+                sh "mvn clean test -Dcucumber.filter.tags=\"${TAGS}\""
             }
         }
         stage('Allure Report Generation'){
