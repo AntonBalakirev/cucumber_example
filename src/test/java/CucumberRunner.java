@@ -9,7 +9,8 @@ import org.junit.runner.RunWith;
                 "summary"},
         glue = {"steps"},
         features = {"src/test/resources/"},
-        tags = "@checkEmailErrorMessage"
+        tags = "@parameterized",
+        stepNotifications = true
 )
 public class CucumberRunner {
 }
