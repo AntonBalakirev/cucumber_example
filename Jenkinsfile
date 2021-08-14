@@ -1,9 +1,16 @@
+def mvn = "/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/3.6.3/bin/mvn"
+
 pipeline{
     agent any
     stages{
-        stage('Run Tests'){
+        stage ('Build') {
             steps{
-                sh "/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/3.6.3/bin/mvn clean test -Dcucumber.filter.tags=\"${TAG}\""
+                sh "${mnv} clean build"
+            }
+        }
+        stage ('Run Tests'){
+            steps{
+                sh "${mnv} test -Dcucumber.filter.tags=\"${TAG}\""
             }
         }
         stage('Allure Report Generation'){
