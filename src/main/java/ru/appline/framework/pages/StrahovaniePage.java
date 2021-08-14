@@ -12,7 +12,7 @@ public class StrahovaniePage extends BasePage {
 
     WebElement insuranceProgramElement;
 
-    final String checkoutOnlineButtonXpath = "../../following-sibling::div//b[text()='Оформить онлайн']/..";
+    final String checkoutOnlineButtonXpath = "//a[@data-test-id='PageTeaserDict_button']";
 
     /**
      * Проверка открытия страницы, путём проверки title страницы
@@ -44,7 +44,7 @@ public class StrahovaniePage extends BasePage {
      * @return TarifPage - т.е. переходим на страницу {@link TariffPage}
      */
     public TariffPage clickCheckoutButton() {
-        WebElement checkoutOnlineButton = insuranceProgramElement.findElement(By.xpath(checkoutOnlineButtonXpath));
+        WebElement checkoutOnlineButton = getDriver().findElement(By.xpath(checkoutOnlineButtonXpath));
         elementToBeClickable(checkoutOnlineButton);
         checkoutOnlineButton.click();
         return app.getTariffPage();
