@@ -5,12 +5,12 @@ pipeline{
     stages{
         stage ('Build') {
             steps{
-                sh "${mnv} clean build"
+                sh "mvn clean build"
             }
         }
         stage ('Run Tests'){
             steps{
-                sh "${mnv} test -Dcucumber.filter.tags=\"${TAG}\""
+                sh "mvn test -Dcucumber.filter.tags=\"${TAG}\""
             }
         }
         stage('Allure Report Generation'){
