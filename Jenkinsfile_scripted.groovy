@@ -4,10 +4,7 @@ node {
     stage('Checkout SCM') {
         checkout(
                 [$class: 'GitSCM',
-                 branches: [[name: '*/master']],
-                 doGenerateSubmoduleConfigurations: false,
-                 extensions: [],
-                 submoduleCfg: [],
+                 branches: [[name: "refs/heads/${BRANCH}"]],
                  userRemoteConfigs: [[url: 'https://github.com/AntonBalakirev/cucumber_example.git']]]
         )
     }
