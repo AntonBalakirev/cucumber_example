@@ -1,6 +1,6 @@
 def mvn = "/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/3.6.3/bin/mvn"
 
-node('any') {
+node {
     stage('Build') {
         sh "${mvn} clean compile"
     }
