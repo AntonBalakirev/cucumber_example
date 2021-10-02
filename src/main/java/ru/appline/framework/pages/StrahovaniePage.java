@@ -4,6 +4,9 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.util.Iterator;
+import java.util.Set;
+
 import static ru.appline.framework.managers.DriverManager.getDriver;
 
 public class StrahovaniePage extends BasePage {
@@ -13,6 +16,8 @@ public class StrahovaniePage extends BasePage {
     WebElement insuranceProgramElement;
 
     final String checkoutOnlineButtonXpath = "//a[@data-test-id='PageTeaserDict_button']";
+
+    final String orderOnWebSiteXpath = "//span[text()='Оформить на сайте']/parent::a";
 
     /**
      * Проверка открытия страницы, путём проверки title страницы
@@ -47,6 +52,28 @@ public class StrahovaniePage extends BasePage {
         WebElement checkoutOnlineButton = getDriver().findElement(By.xpath(checkoutOnlineButtonXpath));
         elementToBeClickable(checkoutOnlineButton);
         checkoutOnlineButton.click();
+        return app.getTariffPage();
+    }
+
+    /**
+     * Кликаем на кнопку "Оформить онлайн"
+     *
+     * @return TarifPage - т.е. переходим на страницу {@link TariffPage}
+     */
+    public TariffPage clickOrderButton() {
+        String parentHandle = getDriver().getWindowHandle();
+        WebElement checkoutOnlineButton = getDriver().findElement(By.xpath(orderOnWebSiteXpath));
+        scrollToElementJs(checkoutOnlineButton);
+        elementToBeClickable(checkoutOnlineButton);
+        checkoutOnlineButton.click();
+        Set<String> windowHandles = getDriver().getWindowHandles();
+        Iterator<String> windowIterator = windowHandles.iterator();
+        while (windowIterator.hasNext()) {
+            String newHandle = windowIterator.next();
+            if(!newHandle.equals(parentHandle)) {
+                getDriver().switchTo().window(newHandle);
+            }
+        }
         return app.getTariffPage();
     }
 

@@ -24,6 +24,7 @@ public class TariffPage extends BasePage {
      * @return TariffPage - т.е. остаемся на этой странице
      */
     public TariffPage checkOpenPage(String expectedTitle) {
+
         elementToBeVisible(pageTitle);
         Assert.assertEquals("Заголовок отсутствует/не соответствует требуемому",
                 expectedTitle, pageTitle.getText());

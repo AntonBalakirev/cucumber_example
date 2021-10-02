@@ -60,6 +60,12 @@ public class Steps {
         logger.info("Кликаем по кнопке: 'Оформить онлайн'");
     }
 
+    @Когда("^Кликаем по кнопке 'Оформить на сайте'$")
+    public void clickOrderButtonOnline() {
+        app.getStrahovaniePage().clickOrderButton();
+        logger.info("Кликаем по кнопке: 'Оформить на сайте'");
+    }
+
     @Когда("^Выбираем сумму страховой защиты '(.*)'$")
     public void selectCoverage(String coverageSum) {
         app.getTariffPage().selectCoverage(coverageSum);
