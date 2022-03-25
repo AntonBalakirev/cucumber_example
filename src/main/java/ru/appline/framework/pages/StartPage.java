@@ -15,6 +15,9 @@ public class StartPage extends BasePage {
     @FindBy(xpath = "//a[contains(@class, 'kitt-top-menu__link_second')]")
     List<WebElement> menuSubList;
 
+    @FindBy(xpath = "//button[contains(@class, 'kitt-region__accept')]")
+    WebElement acceptRegionButton;
+
     /**
      * Функция наведения мыши на любую менюшку
      *

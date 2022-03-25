@@ -55,12 +55,12 @@ public class DriverManager {
             case "remote":
                 DesiredCapabilities capabilities = new DesiredCapabilities();
                 capabilities.setBrowserName("chrome");
-                capabilities.setVersion("81.0");
+                capabilities.setVersion("84.0");
                 capabilities.setCapability("enableVNC", true);
                 capabilities.setCapability("enableVideo", false);
                 try {
                     driver = new RemoteWebDriver(
-                            URI.create("http://164.92.227.174:4444/wd/hub/").toURL(),
+                            URI.create("http://51.250.100.60:4444/wd/hub/").toURL(),
                             capabilities);
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
