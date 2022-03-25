@@ -25,6 +25,10 @@ public class StartPage extends BasePage {
      * @return StartPage - т.е. остаемся на этой странице
      */
     public StartPage selectBaseMenu(String nameBaseMenu) {
+        if(acceptRegionButton.isDisplayed()){
+            action.moveToElement(acceptRegionButton).click().build().perform();
+        }
+
         for (WebElement menuItem : menuBaseList) {
             if (menuItem.getText().equalsIgnoreCase(nameBaseMenu)) {
                 action.moveToElement(menuItem).click().build().perform();
